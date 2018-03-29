@@ -23,11 +23,7 @@ class Student
     SELECT * FROM students WHERE name = ?
     LIMIT 1 SQL
     row = DB[:conn].execute(sql, name)
-    student = Student.new
-    student.id = row[0]
-    student.name = row[1]
-    student.grade = row[2]
-    student
+    self.new_from_db(row)
   end
 
   def save
